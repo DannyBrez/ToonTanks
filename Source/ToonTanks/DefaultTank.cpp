@@ -20,11 +20,53 @@ void ADefaultTank::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
     PlayerInputComponent->BindAxis(TEXT("MoveForward"), this, &ADefaultTank::Move);
+	PlayerInputComponent->BindAxis(TEXT("Turn"), this, &ADefaultTank::Turn);
+
+	PlayerInputComponent->BindAction(TEXT("Fire"), IE_Pressed, this, &ADefaultTank::Fire);
+}
+
+void ADefaultTank::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	if (PlayerControllerRef)
+	{
+		FHitResult HitResult;
+		PlayerControllerRef->GetHitResultUnderCursor(ECollisionChannel::ECC_Visibility, 
+		false,
+		HitResult);
+
+		DrawDebugSphere(GetWorld(),
+		HitResult.ImpactPoint,
+		25.f,
+		12,
+		FColor::Red,
+		false,
+		-1.f);
+
+		RotateTurret(HitResult.ImpactPoint);
+
+	}
+}
+
+// Called when the game starts or when spawned
+void ADefaultTank::BeginPlay()
+{
+	Super::BeginPlay();
+
+	PlayerControllerRef = Cast<APlayerController>(GetController());
 }
 
 void ADefaultTank::Move(float Value)
 {
     FVector DeltaLocation = FVector::ZeroVector;
 	DeltaLocation.X = Value * Speed * UGameplayStatics::GetWorldDeltaSeconds(this);
-	AddActorLocalOffset(DeltaLocation);
+	AddActorLocalOffset(DeltaLocation, true);
+}
+
+void ADefaultTank::Turn(float Value)
+{
+	FRotator DeltaRotation = FRotator::ZeroRotator;
+	DeltaRotation.Yaw = Value * TurnRate * UGameplayStatics::GetWorldDeltaSeconds(this);
+	AddActorLocalRotation(DeltaRotation, true);
 }
