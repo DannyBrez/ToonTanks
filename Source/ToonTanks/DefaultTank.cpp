@@ -29,10 +29,10 @@ void ADefaultTank::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if (PlayerControllerRef)
+	if (TankPlayerController)
 	{
 		FHitResult HitResult;
-		PlayerControllerRef->GetHitResultUnderCursor(ECollisionChannel::ECC_Visibility, 
+		TankPlayerController->GetHitResultUnderCursor(ECollisionChannel::ECC_Visibility, 
 		false,
 		HitResult);
 
@@ -49,12 +49,23 @@ void ADefaultTank::Tick(float DeltaTime)
 	}
 }
 
+//Handles Tank death
+void ADefaultTank::HandleDestruction()
+{
+    Super::HandleDestruction();
+	SetActorHiddenInGame(true);
+	SetActorTickEnabled(false);
+	//For later
+    //Destroy();
+}
+
+
 // Called when the game starts or when spawned
 void ADefaultTank::BeginPlay()
 {
 	Super::BeginPlay();
 
-	PlayerControllerRef = Cast<APlayerController>(GetController());
+	TankPlayerController = Cast<APlayerController>(GetController());
 }
 
 void ADefaultTank::Move(float Value)

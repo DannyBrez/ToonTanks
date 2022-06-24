@@ -17,6 +17,14 @@ void ADefaultTower::Tick(float DeltaTime)
     }
 }
 
+//Handles tower death
+void ADefaultTower::HandleDestruction()
+{
+    Super::HandleDestruction();
+    Destroy();
+}
+
+
 void ADefaultTower::BeginPlay()
 {
     Super::BeginPlay();
