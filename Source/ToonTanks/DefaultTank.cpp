@@ -57,6 +57,7 @@ void ADefaultTank::HandleDestruction()
 	SetActorTickEnabled(false);
 	//For later
     //Destroy();
+	bAlive = false;
 }
 
 
