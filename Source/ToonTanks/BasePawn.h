@@ -22,6 +22,9 @@ protected:
 	void RotateTurret(FVector LookAtTarget);
 	void Fire();
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Components", meta =  (AllowPrivateAccess = "true"));
+	UStaticMeshComponent* TurretMesh;
+
 private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Components", meta = (AllowPrivateAccess = "true"));
 	class UCapsuleComponent* CapsuleComp;
@@ -29,13 +32,10 @@ private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Components", meta = (AllowPrivateAccess = "true"));
 	UStaticMeshComponent* BaseMesh;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Components", meta =  (AllowPrivateAccess = "true"));
-	UStaticMeshComponent* TurretMesh;
-
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Components", meta = (AllowPrivateAccess = "true"));
 	USceneComponent* ProjectileSpawnPoint;
 
-	UPROPERTY(EditDefaultsOnly, Category = "Combat");
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Combat", meta = (AllowPrivateAccess = "true"));
 	TSubclassOf<class ADefaultProjectile> ProjectileClass;
 
 	UPROPERTY(EditAnywhere, Category = "Combat");
