@@ -23,8 +23,7 @@ void ADefaultTank::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
     PlayerInputComponent->BindAxis(TEXT("MoveForward"), this, &ADefaultTank::Move);
 	PlayerInputComponent->BindAxis(TEXT("Turn"), this, &ADefaultTank::Turn);
 
-	//Firing
-	PlayerInputComponent->BindAction(TEXT("Fire"), IE_Pressed, this, &ADefaultTank::Fire);
+	//Firing handled in blueprint
 }
 
 void ADefaultTank::Tick(float DeltaTime)

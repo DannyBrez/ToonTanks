@@ -50,6 +50,13 @@ private:
 	UPROPERTY(EditAnywhere, Category="Movement");
 	float TurnRate = 100.f;
 
+	//Fire Rate
+	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	float FireRate = 1.f;
+
+	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	bool bCanFire = true;
+
 	void Move(float Value);
 	void Turn(float Value);
 
