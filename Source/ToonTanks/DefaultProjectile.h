@@ -17,6 +17,10 @@ public:
 	// Sets default values for this actor's properties
 	ADefaultProjectile();
 
+	//Blueprint Variable --- Each TSubclassOf Projectile will have a different ammo cost
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Combat", meta =  (AllowPrivateAccess = "true"));
+	int AmmoCost = 1;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

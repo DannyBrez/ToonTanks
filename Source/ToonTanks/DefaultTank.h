@@ -35,6 +35,14 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	//Blueprint variable --- Sets the remaining ammo
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Combat", meta =  (AllowPrivateAccess = "true"));
+	int AmmoRemaining = 50;
+
+	//Blueprint variable --- Sets the current ammo based on Projectile ammo cost.
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Combat", meta =  (AllowPrivateAccess = "true"));
+	int CurrentAmmoCost = 1;
+
 private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Components", meta = (AllowPrivateAccess = "true"));
 	class USpringArmComponent* SpringArm;
@@ -53,7 +61,6 @@ private:
 	//Fire Rate
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	float FireRate = 1.f;
-
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	bool bCanFire = true;
 
