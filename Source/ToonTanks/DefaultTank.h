@@ -35,20 +35,12 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	//For ammo selection
-	UFUNCTION(BlueprintImplementableEvent)
-	void ReturnSelectedAmmo(int ammoType);
-
 private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Components", meta = (AllowPrivateAccess = "true"));
 	class USpringArmComponent* SpringArm;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Components", meta = (AllowPrivateAccess = "true"));
 	class UCameraComponent* Camera;
-
-	//For ammo selection
-	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"));
-	int selectedAmmo = 0;
 
 	//Tank Speed
 	UPROPERTY(EditAnywhere, Category="Movement");
@@ -60,8 +52,6 @@ private:
 
 	void Move(float Value);
 	void Turn(float Value);
-	void AmmoOne();
-	void AmmoTwo();
 
 	APlayerController* TankPlayerController;
 	

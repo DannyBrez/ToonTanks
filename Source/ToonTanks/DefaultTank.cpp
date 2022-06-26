@@ -25,11 +25,6 @@ void ADefaultTank::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 
 	//Firing
 	PlayerInputComponent->BindAction(TEXT("Fire"), IE_Pressed, this, &ADefaultTank::Fire);
-
-	//Ammo Selection
-	PlayerInputComponent->BindAction(TEXT("AmmoOne"), IE_Pressed, this, &ADefaultTank::AmmoOne);
-	PlayerInputComponent->BindAction(TEXT("AmmoTwo"), IE_Pressed, this, &ADefaultTank::AmmoTwo);
-
 }
 
 void ADefaultTank::Tick(float DeltaTime)
@@ -42,14 +37,6 @@ void ADefaultTank::Tick(float DeltaTime)
 		TankPlayerController->GetHitResultUnderCursor(ECollisionChannel::ECC_Visibility, 
 		false,
 		HitResult);
-
-		DrawDebugSphere(GetWorld(),
-		HitResult.ImpactPoint,
-		25.f,
-		12,
-		FColor::Red,
-		false,
-		-1.f);
 
 		RotateTurret(HitResult.ImpactPoint);
 
@@ -88,31 +75,4 @@ void ADefaultTank::Turn(float Value)
 	FRotator DeltaRotation = FRotator::ZeroRotator;
 	DeltaRotation.Yaw = Value * TurnRate * UGameplayStatics::GetWorldDeltaSeconds(this);
 	AddActorLocalRotation(DeltaRotation, true);
-}
-
-void ADefaultTank::AmmoOne()
-{
-	if(selectedAmmo == 0)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Already Selected!"));
-		return;
-	}
-	selectedAmmo = 0;
-	UE_LOG(LogTemp, Display, TEXT("Selected 0"));
-}
-
-void ADefaultTank::AmmoTwo()
-{
-	if(selectedAmmo == 1)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Already Selected!"));
-		return;
-	}
-	selectedAmmo = 1;
-	UE_LOG(LogTemp, Display, TEXT("Selected 1"));
-}
-
-void ADefaultTank::ReturnSelectedAmmo(int ammoType)
-{
-	ammoType = selectedAmmo;
 }
