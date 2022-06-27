@@ -63,6 +63,7 @@ void ADefaultProjectile::OnHit(UPrimitiveComponent *HitComp, AActor *OtherActor,
 	if (OtherActor && OtherActor != this && OtherActor != MyOwner)
 	{
 		UGameplayStatics::ApplyDamage(OtherActor, Damage, MyOwnerInstigator, this, DamageTypeClass);
+		UGameplayStatics::ApplyRadialDamage(OtherActor, ExplodeDamage, GetActorLocation(), DamageRadius, DamageTypeClass, TArray<AActor*>(), GetOwner(), MyOwnerInstigator, true);
 		if (HitParticles)
 		{
 			UGameplayStatics::SpawnEmitterAtLocation(this, HitParticles, GetActorLocation(), GetActorRotation());

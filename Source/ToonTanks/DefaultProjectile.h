@@ -35,9 +35,17 @@ private:
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 
-	UPROPERTY(EditAnywhere)
+	//Damage variables
+	UPROPERTY(EditAnywhere, Category = "Combat")
 	float Damage = 50.f;
 
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	float ExplodeDamage = 50.f;
+
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	float DamageRadius = 50.f;
+
+	//Visuals and Sound
 	UPROPERTY(EditAnywhere, Category = "Combat")
 	class UParticleSystem* HitParticles;
 
