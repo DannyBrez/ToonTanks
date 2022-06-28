@@ -60,9 +60,11 @@ private:
 
 	//Fire Rate
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	float FireRate = 1.f;
+	float CurrentFireRate = 1.f;
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	bool bCanFire = true;
+	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	bool bIsTriggerPressed = true;
 
 	void Move(float Value);
 	void Turn(float Value);

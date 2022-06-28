@@ -53,7 +53,6 @@ void ADefaultTank::HandleDestruction()
 	bAlive = false;
 }
 
-
 // Called when the game starts or when spawned
 void ADefaultTank::BeginPlay()
 {

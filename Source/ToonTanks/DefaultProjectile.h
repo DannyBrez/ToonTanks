@@ -45,6 +45,10 @@ private:
 	UPROPERTY(EditAnywhere, Category = "Combat")
 	float DamageRadius = 50.f;
 
+	//Fire Rate
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat", meta = (AllowPrivateAccess = "true"))
+	float FireRate = 1.f;
+
 	//Visuals and Sound
 	UPROPERTY(EditAnywhere, Category = "Combat")
 	class UParticleSystem* HitParticles;
