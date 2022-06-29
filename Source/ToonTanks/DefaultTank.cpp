@@ -59,12 +59,17 @@ void ADefaultTank::BeginPlay()
 	Super::BeginPlay();
 
 	TankPlayerController = Cast<APlayerController>(GetController());
+
+	//Set Tanks Default Values
+	AmmoRemaining = MaxAmmo;
+	CurrentSpeed = NormalSpeed;
+	
 }
 
 void ADefaultTank::Move(float Value)
 {
     FVector DeltaLocation = FVector::ZeroVector;
-	DeltaLocation.X = Value * Speed * UGameplayStatics::GetWorldDeltaSeconds(this);
+	DeltaLocation.X = Value * CurrentSpeed * UGameplayStatics::GetWorldDeltaSeconds(this);
 	AddActorLocalOffset(DeltaLocation, true);
 }
 
