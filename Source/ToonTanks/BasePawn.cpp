@@ -8,6 +8,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "Particles/ParticleSystem.h"
 #include "Camera/CameraShakeBase.h"
+#include "HealthComponent.h"
 
 
 // Sets default values
@@ -27,6 +28,8 @@ ABasePawn::ABasePawn()
 
 	ProjectileSpawnPoint = CreateDefaultSubobject<USceneComponent>(TEXT("Projectile Spawn Point"));
 	ProjectileSpawnPoint->SetupAttachment(TurretMesh);
+
+	HealthComponents = CreateDefaultSubobject<UHealthComponent>(TEXT("HealthComp"));
 }
 
 //Handles Pawn Death

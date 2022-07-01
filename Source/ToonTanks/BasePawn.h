@@ -47,4 +47,7 @@ private:
 
 	UPROPERTY(EditAnywhere, Category = "Combat");
 	TSubclassOf<class UCameraShakeBase> DeathCameraShakeClass;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "HealthsSystem", meta=(ExposeFunctionCategories="Health", AllowPrivateAccess = "true"));
+	class UHealthComponent* HealthComponents;
 };
