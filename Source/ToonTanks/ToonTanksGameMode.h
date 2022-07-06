@@ -37,6 +37,7 @@ private:
 
 	void HandleGameStart();
 
+	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	int32 TargetTowers = 0;
 	int32 GetTargetTowerCount();
 	
